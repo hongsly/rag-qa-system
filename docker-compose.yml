@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # RAG Q&A Streamlit App
+  app:
+    build: .
+    container_name: rag-qa-system
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # Connect to Ollama on host machine
+      - OLLAMA_HOST=http://host.docker.internal:11434
+    volumes:
+      # Mount processed data (index files) - read-only
+      - ./data/processed:/app/data/processed:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  # Optional: Run Ollama in Docker instead of host
+  # Uncomment this section if you want Ollama containerized
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: ollama
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   restart: unless-stopped
+  #   # For GPU support on Linux, uncomment:
+  #   # deploy:
+  #   #   resources:
+  #   #     reservations:
+  #   #       devices:
+  #   #         - driver: nvidia
+  #   #           count: 1
+  #   #           capabilities: [gpu]
+
+# volumes:
+#   ollama_data:

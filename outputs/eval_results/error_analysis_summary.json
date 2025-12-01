@@ -1,0 +1,36 @@
+{
+  "sparse": {
+    "generation_failure": 5,
+    "retrieval_failure_with_hallucination": 2,
+    "success": 18,
+    "ranking_issue": 4,
+    "partial_retrieval": 4,
+    "hallucination": 2,
+    "retrieval_failure": 3,
+    "mixed_failure": 3,
+    "relevancy_issue": 1
+  },
+  "hybrid": {
+    "success": 22,
+    "retrieval_failure": 5,
+    "retrieval_failure_with_hallucination": 2,
+    "partial_retrieval": 5,
+    "generation_failure": 4,
+    "ranking_issue": 3,
+    "mixed_failure": 1
+  },
+  "dense": {
+    "success": 10,
+    "retrieval_failure": 11,
+    "partial_retrieval": 4,
+    "relevancy_issue": 1,
+    "retrieval_failure_with_hallucination": 1,
+    "ranking_issue": 4,
+    "generation_failure": 8,
+    "mixed_failure": 3
+  },
+  "none": {
+    "success": 13,
+    "generation_failure": 29
+  }
+}

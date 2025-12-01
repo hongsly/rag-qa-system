@@ -1,0 +1,21 @@
+# RAG Q&A System - Runtime Requirements
+# For production/Docker deployment
+# Install with: pip install -r requirements.txt
+
+# Core RAG dependencies
+sentence-transformers==5.1.2
+faiss-cpu==1.13.0
+rank-bm25==0.2.2
+openai==2.8.1
+ollama==0.6.1
+python-dotenv==1.2.1
+
+# Tokenization
+tiktoken==0.12.0
+nltk==3.9.2
+
+# Numerical computing
+numpy==2.2.6
+
+# UI
+streamlit==1.51.0

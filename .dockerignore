@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Package build
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (optional - exclude if not needed in image)
+*.md
+LICENSE
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+Icon
+
+# Environment
+.env
+.env.local
+
+# Large files you don't need in container
+data/raw/*.pdf  # Already processed to chunks
+outputs/        # Generated data, can mount as volume
+
+# Experiments (if not needed at runtime)
+experiments/
+
+# Docker itself
+Dockerfile
+docker-compose.yml
+.dockerignore

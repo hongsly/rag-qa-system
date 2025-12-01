@@ -1,0 +1,70 @@
+[
+    {
+      "id": "factual_1",
+      "question": "What is Retrieval-Augmented Generation?",
+      "type": "factual",
+      "expected_sources": ["Lewis et al., 2020"],
+      "notes": "Should cite the original RAG paper",
+      "reference": "Retrieval-Augmented Generation (RAG) is a method that combines parametric memory (a pre-trained language model) with non-parametric memory (a dense vector index of documents) for knowledge-intensive NLP tasks. RAG retrieves relevant documents from an external corpus and conditions the language model on both the input query and retrieved documents to generate responses. This approach allows models to access up-to-date knowledge without retraining and reduces hallucinations by grounding generations in retrieved evidence. The method was introduced by Lewis et al. in 2020."
+    },
+    {
+      "id": "factual_2",
+      "question": "Who proposed the FiD (Fusion-in-Decoder) architecture?",
+      "type": "factual",
+      "expected_sources": ["Izacard et al."],
+      "reference": "The FiD (Fusion-in-Decoder) architecture was proposed by Izacard and Grave in 2021. FiD processes multiple retrieved passages independently in the encoder and then fuses them in the decoder, allowing the model to effectively leverage information from many passages simultaneously while maintaining computational efficiency."
+    },
+    {
+      "id": "factual_3",
+      "question": "What does RAFT stand for?",
+      "type": "factual",
+      "expected_sources": ["Zhang et al., 2024"],
+      "reference": "RAFT stands for Retrieval-Augmented Fine-Tuning. It is a training method proposed by Zhang et al. in 2024 that fine-tunes language models to better utilize retrieved documents by training them to distinguish relevant from irrelevant retrieved passages and to extract correct information from the relevant ones."
+    },
+    {
+      "id": "reasoning_1",
+      "question": "Why does hybrid retrieval (dense + sparse) outperform either approach alone?",
+      "type": "reasoning",
+      "notes": "Should explain complementary strengths",
+      "reference": "Hybrid retrieval combines dense (embedding-based) and sparse (keyword-based like BM25) retrieval methods, leveraging their complementary strengths. Sparse retrieval excels at exact keyword matching and is effective for queries with specific terminology, proper nouns, or rare terms. Dense retrieval captures semantic similarity and handles paraphrasing, synonyms, and conceptual queries better. By combining both approaches (typically using rank fusion methods like RRF), hybrid retrieval achieves higher recall by retrieving documents that either method would miss alone, leading to more comprehensive and robust retrieval performance across diverse query types."
+    },
+    {
+      "id": "reasoning_2",
+      "question": "How does ColBERT differ from traditional dense retrieval?",
+      "type": "reasoning",
+      "reference": "ColBERT (Contextualized Late Interaction over BERT) differs from traditional dense retrieval by using late interaction instead of single-vector representations. While traditional dense retrieval encodes queries and documents into single dense vectors and computes similarity via dot product, ColBERT preserves token-level representations and computes interactions between all query and document token embeddings. This approach captures fine-grained token-level matching signals while maintaining efficiency through maximum similarity (MaxSim) operations and precomputation of document embeddings. The late interaction enables better matching of specific terms and phrases compared to single-vector approaches."
+    },
+    {
+      "id": "reasoning_3",
+      "question": "What are the trade-offs between long-context LLMs and RAG systems?",
+      "type": "reasoning",
+      "reference": "Long-context LLMs and RAG systems have different trade-offs. Long-context LLMs can process entire documents directly, avoiding retrieval errors and maintaining full context, but they face challenges including higher computational costs (quadratic attention complexity), difficulty focusing on relevant information in very long contexts (lost-in-the-middle problem), inability to update knowledge without retraining, and higher inference latency. RAG systems offer advantages including efficient access to large knowledge bases, easy knowledge updates by modifying the retrieval index, lower inference costs by processing only relevant chunks, and explicit source attribution. However, RAG systems depend on retrieval quality, may miss relevant information if retrieval fails, and require careful engineering of chunking and retrieval strategies. The choice depends on the use case: RAG is often preferred for knowledge-intensive tasks requiring up-to-date information, while long-context LLMs suit applications requiring deep understanding of specific documents."
+    },
+    {
+      "id": "multihop_1",
+      "question": "How do GraphRAG and FiD differ in their approach to multi-document reasoning?",
+      "type": "multi_hop",
+      "notes": "Requires understanding both papers",
+      "reference": "GraphRAG and FiD take fundamentally different approaches to multi-document reasoning. FiD (Fusion-in-Decoder) uses a sequence-to-sequence architecture where retrieved passages are processed independently in parallel by the encoder, and then their representations are concatenated and fused in the decoder during generation. This allows the model to implicitly learn to combine information from multiple passages through attention mechanisms, but relationships between passages are only captured during decoding. GraphRAG, on the other hand, explicitly constructs a knowledge graph from retrieved documents, creating structured representations of entities and their relationships across documents. It then uses graph-based reasoning methods to traverse and aggregate information from the graph structure. GraphRAG's explicit graph structure makes multi-hop reasoning paths more interpretable and can better capture complex relationships, while FiD's approach is more flexible and doesn't require structured knowledge extraction but is less interpretable."
+    },
+    {
+      "id": "multihop_2",
+      "question": "What evaluation metrics are recommended for both retrieval and generation in RAG?",
+      "type": "multi_hop",
+      "reference": "RAG systems should be evaluated on both retrieval and generation quality. For retrieval, recommended metrics include: Recall@K (what fraction of relevant documents are in top-K results), Mean Reciprocal Rank (MRR, measures ranking quality), and NDCG (Normalized Discounted Cumulative Gain, considers both relevance and ranking). For generation quality, recommended metrics include: answer correctness (semantic similarity to reference answer using LLM-based evaluation), faithfulness (whether the answer is grounded in retrieved context), answer relevancy (whether the answer addresses the question), and context precision/recall (whether retrieved chunks are relevant and sufficient). Framework like RAGAS provides LLM-based metrics that avoid issues with incomplete ground truth. End-to-end metrics like exact match and F1 score on question answering benchmarks are also commonly used to measure overall RAG system performance."
+    },
+    {
+      "id": "negative_1",
+      "question": "How to bake bread?",
+      "type": "negative",
+      "notes": "Not in corpus - should refuse or say unknown",
+      "reference": "I cannot answer this question as it is outside the scope of the available RAG research papers. The corpus contains information about Retrieval-Augmented Generation systems and related NLP techniques, not culinary topics."
+    },
+    {
+      "id": "negative_2",
+      "question": "How do you train a neural network from scratch?",
+      "type": "negative",
+      "notes": "General ML, not RAG-specific",
+      "reference": "While neural network training is a broad machine learning topic, the RAG research corpus focuses specifically on retrieval-augmented generation systems. For general neural network training information (backpropagation, gradient descent, loss functions, etc.), you would need to consult general deep learning resources. The corpus may contain some references to neural network training in the context of training retrieval models or fine-tuning language models for RAG, but does not provide comprehensive coverage of training neural networks from scratch."
+    }
+  ]
