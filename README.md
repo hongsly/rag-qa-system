@@ -5,6 +5,12 @@ A production-quality **Retrieval-Augmented Generation (RAG)** system for questio
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## 🌐 Live Demo
+
+**Try the live app**: [https://hongsly-rag-qa-system-app-ze0vmi.streamlit.app/](https://hongsly-rag-qa-system-app-ze0vmi.streamlit.app/)
+
+Ask questions about RAG and LLM research papers and see the system retrieve relevant context and generate answers in real-time.
+
 ---
 
 ## 🎯 Project Overview
@@ -110,7 +116,11 @@ This project demonstrates a complete RAG pipeline implementation, from data inge
 
 ## 🚀 Quick Start
 
-### Option 1: Docker (Recommended)
+### Option 1: Try the Live Demo (Easiest)
+
+Visit [https://hongsly-rag-qa-system-app-ze0vmi.streamlit.app/](https://hongsly-rag-qa-system-app-ze0vmi.streamlit.app/) to use the deployed application immediately—no installation required!
+
+### Option 2: Docker (Recommended for Local Setup)
 
 ```bash
 # 1. Clone and navigate
@@ -137,7 +147,7 @@ ollama pull qwen2.5-coder:7b
 docker-compose up -d
 ```
 
-### Option 2: Local Installation
+### Option 3: Local Installation
 
 ```bash
 # 1. Create virtual environment
